@@ -31,19 +31,24 @@ jobs:
     outputs:
       image-uri: ghcr.io/${{ github.repository }}/e2e@${{ steps.build.outputs.digest }}
     steps:
-      - uses: actions/checkout@v7
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: step-security/docker-login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/metadata-action@v6
+      - uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
         id: metadata
         with:
           images: ${{ inputs.images }}
           # avoid overwriting the latest tag because metadata-action does not add a suffix to it
           flavor: latest=false,suffix=-amd64
-      - uses: int128/docker-build-cache-config-action@v1
+      - uses: int128/docker-build-cache-config-action@d1b27ffbf29fb93b7239130db030c702198fd52b # v1.64.0
         id: cache
         with:
           image: ${{ inputs.cache-image }}
