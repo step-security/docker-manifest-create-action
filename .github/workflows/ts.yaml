@@ -53,4 +53,4 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
-      - uses: int128/update-generated-files-action@cf464119e796f83eac0a9e85021c568269aa9e1a # v2.103.0
+      - uses: int128/update-generated-files-action@1d6d8fac356eabbd925f4c3cab43d871bab249cd # v2.114.0
