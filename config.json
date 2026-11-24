@@ -5,8 +5,8 @@
   "action_type": "node",
   "upstream": {
     "repository": "int128/docker-manifest-create-action",
-    "synced_tag": "v2.29.0",
-    "synced_commit": "a118e9fe12455375d4810aa318c20e6dba77288e",
+    "synced_tag": "v2.30.0",
+    "synced_commit": "d6ac360314337bbfb870747d9616b83118acb330",
     "archived": false
   },
   "build": {
